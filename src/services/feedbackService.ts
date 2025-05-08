@@ -1,7 +1,7 @@
 import { Feedback, EmojiRating } from "@/types/feedback";
 
 // ✅
-const API_URL = 'https://registrar-feedback.vercel.app/api/feedback';
+const API_URL = '/api/feedback';
 
 export const saveFeedback = async (emoji: EmojiRating, comment?: string): Promise<Feedback> => {
   const response = await fetch(API_URL, {
