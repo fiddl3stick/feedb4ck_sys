@@ -1,13 +1,15 @@
-import { connectToDatabase } from './_db';
-import Feedback from './feedbackModel';
+// api/feedback/index.js
+
+import { connectToDatabase } from '../../_db';
+import Feedback from '../../Feedback';
 
 export default async function handler(req, res) {
-  // ✅ Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  // ✅ Add CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*'); // You can restrict to a specific domain later
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // ✅ Respond to OPTIONS preflight request
+  // ✅ Respond to preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
@@ -30,7 +32,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Failed to save feedback' });
     }
   } else {
-    res.setHeader('Allow', ['GET', 'POST']);
+    res.setHeader('Allow', ['GET', 'POST', 'OPTIONS']);
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 }
