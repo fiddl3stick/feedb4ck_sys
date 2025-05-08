@@ -21,10 +21,10 @@ const Header: FC<HeaderProps> = ({
           className="text-sm text-primary hover:text-primary-foreground transition-colors"
         >
           Admin Dashboard
-          </Link>
-        )}
-      </div>
-    </header>
+        </Link>
+      )}
+    </div>
+  </header>  
   );
 };
 
